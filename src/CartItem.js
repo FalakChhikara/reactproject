@@ -72,41 +72,42 @@ import React from 'react';
 //     }
 // }
 
-class CartItem extends React.Component {
+const CartItem = (props) => {
 
-  render(){
-      const {price, title, qty, imgsrc} = this.props.product;
-      return (
-        <div className="cart-item">
-            <div className="left-block">
-                <img style = {styles.image} src={imgsrc}/>
-            </div>
-            <div className="right-block">
-                <div style={{fontSize:25}}>{title}</div>
-                <div style={{color:"gray"}}>Rs. {price}</div>
-                <div style={{color:"gray"}}>Qty. {qty}</div>
-                <div className="cart-item-actions">
-                    <img
-                        alt="increase"
-                        className="action-icons"
-                        src="https://image.flaticon.com/icons/svg/992/992651.svg"
-                        onClick={()=> this.props.onIncQty(this.props.product)} />
-                    <img
-                        alt="decrease"
-                        className="action-icons"
-                        src="https://image.flaticon.com/icons/svg/1665/1665612.svg" 
-                        onClick={()=> this.props.onDecQty(this.props.product)} />
-                    <img 
-                        alt="delete" 
-                        className="action-icons" 
-                        src="https://image.flaticon.com/icons/svg/1214/1214428.svg" 
-                        onClick={()=> this.props.onDelQty(this.props.product.id)} />
-                    
-                </div>
+  
+    const {price, title, qty, imgsrc} = props.product;
+    const {onIncQty, onDecQty, onDelQty} = props;
+    return (
+    <div className="cart-item">
+        <div className="left-block">
+            <img style = {styles.image} src={imgsrc}/>
+        </div>
+        <div className="right-block">
+            <div style={{fontSize:25}}>{title}</div>
+            <div style={{color:"gray"}}>Rs. {price}</div>
+            <div style={{color:"gray"}}>Qty. {qty}</div>
+            <div className="cart-item-actions">
+                <img
+                    alt="increase"
+                    className="action-icons"
+                    src="https://image.flaticon.com/icons/svg/992/992651.svg"
+                    onClick={()=> onIncQty(props.product)} />
+                <img
+                    alt="decrease"
+                    className="action-icons"
+                    src="https://image.flaticon.com/icons/svg/1665/1665612.svg" 
+                    onClick={()=> onDecQty(props.product)} />
+                <img 
+                    alt="delete" 
+                    className="action-icons" 
+                    src="https://image.flaticon.com/icons/svg/1214/1214428.svg" 
+                    onClick={()=> onDelQty(props.product.id)} />
+                
             </div>
         </div>
-    );
-    }
+    </div>
+);
+    
 }
 
 
